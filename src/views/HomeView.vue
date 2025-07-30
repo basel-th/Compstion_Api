@@ -5,13 +5,15 @@
     <!-- <p>bleain is {{ active }}</p> -->
     <!-- <p>object {{ object }}</p> -->
     <!-- <p>array is {{ array }}</p> -->
-    <p>age is {{ age }}</p>
-    <button @click="increAge">click</button>
+    <!-- <p>age is {{ age }}</p> -->
+    <!-- <button @click="increAge">click</button> -->
+    <p>{{ UserWelcome }}</p>
+    <p>{{ ageAfter5Years }}</p>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 // const name = ref("basel");
 // const LastName = ref("alqureapy");
 // const active = ref(true);
@@ -21,8 +23,17 @@ import { ref } from "vue";
 //   active: true,
 // });
 // const array = ref(["basel", "alqureapy", 25, true]);
+// function increAge() {
+//   age.value++;
+// }
+const name = ref("Basel Ahmed");
 const age = ref(25);
-function increAge() {
-  age.value++;
-}
+
+const UserWelcome = computed(
+  () => `Heollo ${name.value}, youre age is ${age.value}`
+);
+
+const ageAfter5Years = computed(() => {
+  return `your age after 5 years will be ${age.value + 5}`;
+});
 </script>
