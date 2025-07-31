@@ -9,7 +9,8 @@
     <!-- <button @click="increAge">click</button> -->
     <!-- <p>{{ UserWelcome }}</p>
     <p>{{ ageAfter5Years }}</p> -->
-    <the-comp @handel-cilck="excuteFunction"></the-comp>
+    <!-- <the-comp @handel-cilck="excuteFunction"></the-comp> -->
+    <the-comp></the-comp>
   </div>
 </template>
 
@@ -38,7 +39,13 @@ import TheComp from "@/components/MyComponent.vue";
 // const ageAfter5Years = computed(() => {
 //   return `your age after 5 years will be ${age.value + 5}`;
 // });
-const excuteFunction = () => {
-  console.log("Exuected Function");
-};
+// const excuteFunction = () => {
+//   console.log("Exuected Function");
+// };
+import { useRouter, useRoute } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
+console.log("this router from HomeView", router.push);
+console.log("this route from HomeView", route.name);
 </script>

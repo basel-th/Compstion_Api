@@ -2,11 +2,18 @@
   <dev class="comp">
     <h2>Thus is commpenet</h2>
     <!-- <p>name is {{ props.userName }} , age is {{ props.userAge }}</p> -->
-    <button @click="emits('handelCilck')">Emit Event</button>
+    <!-- <button @click="emits('handelCilck')">Emit Event</button> -->
   </dev>
 </template>
 
-<script setup>
+<script>
+export default {
+  mounted() {
+    console.log("this router from MyComponent", this.$router);
+    console.log("this route from MyComponent", this.$route);
+  },
+};
+
 //import { defineProps } from "vue";
 // const props = defineProps({
 //   userName: {
@@ -19,7 +26,7 @@
 //   },
 // });
 
-import { defineEmits } from "vue";
+// import { defineEmits } from "vue";
 
-const emits = defineEmits(["handelCilck"]);
+// const emits = defineEmits(["handelCilck"]);
 </script>
