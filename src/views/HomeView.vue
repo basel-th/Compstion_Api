@@ -9,12 +9,12 @@
     <!-- <button @click="increAge">click</button> -->
     <!-- <p>{{ UserWelcome }}</p>
     <p>{{ ageAfter5Years }}</p> -->
-    <the-comp :userName="name" :userAge="age"></the-comp>
+    <the-comp @handel-cilck="excuteFunction"></the-comp>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+// import { ref } from "vue";
 import TheComp from "@/components/MyComponent.vue";
 // const name = ref("basel");
 // const LastName = ref("alqureapy");
@@ -28,8 +28,8 @@ import TheComp from "@/components/MyComponent.vue";
 // function increAge() {
 //   age.value++;
 // }
-const name = ref("Basel Ahmed");
-const age = ref(25);
+// const name = ref("Basel Ahmed");
+// const age = ref(25);
 
 // const UserWelcome = computed(
 //   () => `Heollo ${name.value}, youre age is ${age.value}`
@@ -38,4 +38,7 @@ const age = ref(25);
 // const ageAfter5Years = computed(() => {
 //   return `your age after 5 years will be ${age.value + 5}`;
 // });
+const excuteFunction = () => {
+  console.log("Exuected Function");
+};
 </script>
