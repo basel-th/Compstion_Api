@@ -7,7 +7,7 @@
     <!-- <p>array is {{ array }}</p> -->
     <!-- <p>age is {{ age }}</p> -->
     <!-- <button @click="increAge">click</button> -->
-    <p>{{ UserWelcome }}</p>
+    <p ref="wlecE1">{{ UserWelcome }}</p>
     <p>{{ ageAfter5Years }}</p>
   </div>
 </template>
@@ -28,6 +28,12 @@ import { computed, ref } from "vue";
 // }
 const name = ref("Basel Ahmed");
 const age = ref(25);
+
+const wlecE1 = ref(null);
+
+setTimeout(() => {
+  console.log(wlecE1.value);
+}, 2000);
 
 const UserWelcome = computed(
   () => `Heollo ${name.value}, youre age is ${age.value}`
