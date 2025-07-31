@@ -7,13 +7,15 @@
     <!-- <p>array is {{ array }}</p> -->
     <!-- <p>age is {{ age }}</p> -->
     <!-- <button @click="increAge">click</button> -->
-    <p ref="wlecE1">{{ UserWelcome }}</p>
-    <p>{{ ageAfter5Years }}</p>
+    <!-- <p>{{ UserWelcome }}</p>
+    <p>{{ ageAfter5Years }}</p> -->
+    <the-comp :userName="name" :userAge="age"></the-comp>
   </div>
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { ref } from "vue";
+import TheComp from "@/components/MyComponent.vue";
 // const name = ref("basel");
 // const LastName = ref("alqureapy");
 // const active = ref(true);
@@ -29,17 +31,11 @@ import { computed, ref } from "vue";
 const name = ref("Basel Ahmed");
 const age = ref(25);
 
-const wlecE1 = ref(null);
+// const UserWelcome = computed(
+//   () => `Heollo ${name.value}, youre age is ${age.value}`
+// );
 
-setTimeout(() => {
-  console.log(wlecE1.value);
-}, 2000);
-
-const UserWelcome = computed(
-  () => `Heollo ${name.value}, youre age is ${age.value}`
-);
-
-const ageAfter5Years = computed(() => {
-  return `your age after 5 years will be ${age.value + 5}`;
-});
+// const ageAfter5Years = computed(() => {
+//   return `your age after 5 years will be ${age.value + 5}`;
+// });
 </script>
