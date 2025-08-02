@@ -1,9 +1,12 @@
 <template>
   <div class="home">
     <h1>This Is Home Page</h1>
-    <p>counter is {{ counter }}</p>
+    <p>the counter is {{ counter }}</p>
+    <button @click="counter++">incress</button>
+    <button @click="myArr.push(counter)">Push Counter Value</button>
+    <!-- <p>counter is {{ counter }}</p>
     <button @click="increase">increase</button>
-    <button @click="decrease">decrease</button>
+    <button @click="decrease">decrease</button> -->
     <!-- <h1 v-colorize="'red'">This Is Home Page</h1>
     <p v-colorize="'red'">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ullam
@@ -24,8 +27,32 @@
 </template>
 
 <script setup>
-import counterFunction from "@/mixins/conter";
-const { counter, increase, decrease } = counterFunction();
+import { ref, watch } from "vue";
+const counter = ref(0);
+const myArr = ref([]);
+
+// watch
+
+watch(
+  () => counter.value,
+  (newvel, oldvel) => {
+    console.log(oldvel);
+    console.log(newvel);
+  }
+);
+
+watch(
+  () => myArr.value,
+  (newvel) => {
+    console.log(newvel);
+  },
+  {
+    deep: true,
+  }
+);
+
+// import counterFunction from "@/mixins/conter";
+// const { counter, increase, decrease } = counterFunction();
 // const vColorize = {
 //   mounted: (el, data) => {
 //     el.style.color = data.value;
