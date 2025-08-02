@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <h1 v-colorize="'red'">This Is Home Page</h1>
+    <h1>This Is Home Page</h1>
+    <p>counter is {{ counter }}</p>
+    <button @click="increase">increase</button>
+    <button @click="decrease">decrease</button>
+    <!-- <h1 v-colorize="'red'">This Is Home Page</h1>
     <p v-colorize="'red'">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ullam
       error, eos nemo inventore minima ab et voluptas! Quasi harum consectetur
       dolorem minima mollitia quas eos culpa aut nulla ipsam.
-    </p>
+    </p> -->
     <!-- <h2>My Name is {{ name }} - {{ LastName }}</h2> -->
     <!-- <p>bleain is {{ active }}</p> -->
     <!-- <p>object {{ object }}</p> -->
@@ -20,11 +24,13 @@
 </template>
 
 <script setup>
-const vColorize = {
-  mounted: (el, data) => {
-    el.style.color = data.value;
-  },
-};
+import counterFunction from "@/mixins/conter";
+const { counter, increase, decrease } = counterFunction();
+// const vColorize = {
+//   mounted: (el, data) => {
+//     el.style.color = data.value;
+//   },
+// };
 // import { ref } from "vue";
 // import TheComp from "@/components/MyComponent.vue";
 // const name = ref("basel");
