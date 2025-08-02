@@ -1,6 +1,11 @@
 <template>
   <div class="home">
-    <h1>This Is Home Page</h1>
+    <h1 v-colorize="'red'">This Is Home Page</h1>
+    <p v-colorize="'red'">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ullam
+      error, eos nemo inventore minima ab et voluptas! Quasi harum consectetur
+      dolorem minima mollitia quas eos culpa aut nulla ipsam.
+    </p>
     <!-- <h2>My Name is {{ name }} - {{ LastName }}</h2> -->
     <!-- <p>bleain is {{ active }}</p> -->
     <!-- <p>object {{ object }}</p> -->
@@ -10,13 +15,18 @@
     <!-- <p>{{ UserWelcome }}</p>
     <p>{{ ageAfter5Years }}</p> -->
     <!-- <the-comp @handel-cilck="excuteFunction"></the-comp> -->
-    <the-comp></the-comp>
+    <!-- <the-comp></the-comp> -->
   </div>
 </template>
 
 <script setup>
+const vColorize = {
+  mounted: (el, data) => {
+    el.style.color = data.value;
+  },
+};
 // import { ref } from "vue";
-import TheComp from "@/components/MyComponent.vue";
+// import TheComp from "@/components/MyComponent.vue";
 // const name = ref("basel");
 // const LastName = ref("alqureapy");
 // const active = ref(true);
@@ -42,10 +52,10 @@ import TheComp from "@/components/MyComponent.vue";
 // const excuteFunction = () => {
 //   console.log("Exuected Function");
 // };
-import { useRouter, useRoute } from "vue-router";
+// import { useRouter, useRoute } from "vue-router";
 
-const router = useRouter();
-const route = useRoute();
-console.log("this router from HomeView", router.push);
-console.log("this route from HomeView", route.name);
+// const router = useRouter();
+// const route = useRoute();
+// console.log("this router from HomeView", router.push);
+// console.log("this route from HomeView", route.name);
 </script>
