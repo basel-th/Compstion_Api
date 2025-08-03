@@ -1,9 +1,11 @@
 <template>
   <div class="home">
     <h1>This Is Home Page</h1>
-    <p>the counter is {{ counter }}</p>
+    <hr />
+    <theComp></theComp>
+    <!-- <p>the counter is {{ counter }}</p>
     <button @click="counter++">incress</button>
-    <button @click="myArr.push(counter)">Push Counter Value</button>
+    <button @click="myArr.push(counter)">Push Counter Value</button> -->
     <!-- <p>counter is {{ counter }}</p>
     <button @click="increase">increase</button>
     <button @click="decrease">decrease</button> -->
@@ -27,29 +29,40 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-const counter = ref(0);
-const myArr = ref([]);
+import theComp from "@/components/MyComponent.vue";
+import { ref, provide } from "vue";
+const username = ref("Basel Ahmed");
+const userAge = ref(25);
+const sayHollew = () => {
+  console.log("hello" + " " + username.value);
+};
 
-// watch
+provide("name", username.value);
+provide("userage", userAge.value);
+provide("sayHollew", sayHollew);
+// import { ref, watch } from "vue";
+// const counter = ref(0);
+// const myArr = ref([]);
 
-watch(
-  () => counter.value,
-  (newvel, oldvel) => {
-    console.log(oldvel);
-    console.log(newvel);
-  }
-);
+// // watch
 
-watch(
-  () => myArr.value,
-  (newvel) => {
-    console.log(newvel);
-  },
-  {
-    deep: true,
-  }
-);
+// watch(
+//   () => counter.value,
+//   (newvel, oldvel) => {
+//     console.log(oldvel);
+//     console.log(newvel);
+//   }
+// );
+
+// watch(
+//   () => myArr.value,
+//   (newvel) => {
+//     console.log(newvel);
+//   },
+//   {
+//     deep: true,
+//   }
+// );
 
 // import counterFunction from "@/mixins/conter";
 // const { counter, increase, decrease } = counterFunction();
