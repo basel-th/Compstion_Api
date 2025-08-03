@@ -2,7 +2,10 @@
   <div class="home">
     <h1>This Is Home Page</h1>
     <hr />
-    <theComp></theComp>
+    <p>the counter is {{ counter }}</p>
+    <button @click="counter++">incress</button>
+
+    <!-- <theComp></theComp> -->
     <!-- <p>the counter is {{ counter }}</p>
     <button @click="counter++">incress</button>
     <button @click="myArr.push(counter)">Push Counter Value</button> -->
@@ -29,17 +32,32 @@
 </template>
 
 <script setup>
-import theComp from "@/components/MyComponent.vue";
-import { ref, provide } from "vue";
-const username = ref("Basel Ahmed");
-const userAge = ref(25);
-const sayHollew = () => {
-  console.log("hello" + " " + username.value);
-};
+import { onBeforeMount, onMounted, onBeforeUpdate, onUpdated, ref } from "vue";
+onBeforeMount(() => {
+  console.log("Before Mounted");
+});
+onMounted(() => {
+  console.log("Mounted");
+});
+onBeforeUpdate(() => {
+  console.log("BeforeUpdate");
+});
+onUpdated(() => {
+  console.log("Updated");
+});
 
-provide("name", username.value);
-provide("userage", userAge.value);
-provide("sayHollew", sayHollew);
+const counter = ref(0);
+// import theComp from "@/components/MyComponent.vue";
+// import { ref, provide } from "vue";
+// const username = ref("Basel Ahmed");
+// const userAge = ref(25);
+// const sayHollew = () => {
+//   console.log("hello" + " " + username.value);
+// };
+
+// provide("name", username.value);
+// provide("userage", userAge.value);
+// provide("sayHollew", sayHollew);
 // import { ref, watch } from "vue";
 // const counter = ref(0);
 // const myArr = ref([]);
