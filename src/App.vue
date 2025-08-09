@@ -1,4 +1,5 @@
 <template>
+  <my-nav></my-nav>
   <router-view />
 </template>
 
@@ -24,3 +25,7 @@ nav {
   }
 }
 </style>
+
+<script setup>
+import MyNav from "./components/MyNav.vue";
+</script>

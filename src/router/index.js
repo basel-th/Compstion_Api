@@ -6,7 +6,15 @@ const routes = [
     name: "home",
     component: () => import("@/views/HomeView.vue"),
     meta: {
-      title: "Home Page",
+      title: "Home",
+    },
+  },
+  {
+    path: "/show-todo",
+    name: "ShowToDo",
+    component: () => import("@/views/ShowToDo.vue"),
+    meta: {
+      title: "ShowtoDo",
     },
   },
 ];

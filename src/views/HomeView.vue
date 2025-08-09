@@ -1,9 +1,34 @@
 <template>
   <div class="home">
-    <h1>This Is Home Page</h1>
+    <h1>Add New ToDo</h1>
+    <form action="" @submit.prevent="addToDo">
+      <input
+        type="text"
+        v-model="ToDoOBject.title"
+        name="title"
+        placeholder="Enter ToDo Title"
+      />
+      <hr />
+      <input
+        type="date"
+        v-model="ToDoOBject.date_from"
+        name="date_from"
+        placeholder="from"
+      />
+      <input
+        type="date"
+        v-model="ToDoOBject.date_to"
+        name="date_to"
+        placeholder="to"
+      />
+      <hr />
+      <input type="submit" value="Add ToDo" />
+    </form>
+
+    <!-- <h1>This Is Home Page</h1>
     <hr />
     <p>the counter is {{ counter }}</p>
-    <button @click="counter++">incress</button>
+    <button @click="counter++">incress</button> -->
 
     <!-- <theComp></theComp> -->
     <!-- <p>the counter is {{ counter }}</p>
@@ -32,21 +57,50 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted, onBeforeUpdate, onUpdated, ref } from "vue";
-onBeforeMount(() => {
-  console.log("Before Mounted");
-});
-onMounted(() => {
-  console.log("Mounted");
-});
-onBeforeUpdate(() => {
-  console.log("BeforeUpdate");
-});
-onUpdated(() => {
-  console.log("Updated");
+import { ref } from "vue";
+
+import todomixins from "@/mixins/todo";
+const { ToDoList, addToLoacalStorage } = todomixins();
+
+const ToDoOBject = ref({
+  title: "",
+  date_from: "",
+  date_to: "",
+  created_at: "",
+  iscompleted: false,
 });
 
-const counter = ref(0);
+// methods
+const addToDo = () => {
+  ToDoOBject.value.id = ToDoList.value.length + 1;
+  ToDoOBject.value.created_at = new Date().toISOString();
+  ToDoList.value.push(ToDoOBject.value);
+  addToLoacalStorage();
+  ToDoOBject.value = {
+    id: "",
+    title: "",
+    date_from: "",
+    date_to: "",
+    created_at: "",
+    iscompleted: false,
+  };
+};
+
+// import { onBeforeMount, onMounted, onBeforeUpdate, onUpdated, ref } from "vue";
+// onBeforeMount(() => {
+//   console.log("Before Mounted");
+// });
+// onMounted(() => {
+//   console.log("Mounted");
+// });
+// onBeforeUpdate(() => {
+//   console.log("BeforeUpdate");
+// });
+// onUpdated(() => {
+//   console.log("Updated");
+// });
+
+// const counter = ref(0);
 // import theComp from "@/components/MyComponent.vue";
 // import { ref, provide } from "vue";
 // const username = ref("Basel Ahmed");
